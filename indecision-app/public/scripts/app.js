@@ -1,16 +1,10 @@
 'use strict';
 
 console.log('App.js is running');
-// JSX - JavaScript XML
-
-// if statements
-// ternary operators
-// logical && operator (true && 'Some text' = 'Some Text; false && 'Some Text = false)
-
 
 var app = {
-    title: 'Some title',
-    subtitle: 'Put your life in the hands of your computer',
+    title: 'Indecision App',
+    subtitle: 'Put your life in the hands of a computer',
     options: ['One', 'Two']
 };
 
@@ -20,38 +14,53 @@ var template = React.createElement(
     React.createElement(
         'h1',
         null,
-        app.title
+        ' ',
+        app.title,
+        ' '
     ),
     app.subtitle && React.createElement(
         'p',
         null,
-        app.subtitle
+        ' ',
+        app.subtitle,
+        ' '
     ),
-    React.createElement(
-        'p',
-        null,
-        app.options.length > 0 ? 'Here are your options' : 'No options'
-    ),
-    React.createElement(
-        'ol',
+    app.options && app.options.length > 0 ? React.createElement(
+        'div',
         null,
         React.createElement(
-            'li',
+            'p',
             null,
-            'Item one'
+            ' Here are your options: '
         ),
         React.createElement(
-            'li',
+            'ol',
             null,
-            'Item two'
+            React.createElement(
+                'li',
+                null,
+                ' Item ',
+                app.options[0],
+                ' '
+            ),
+            React.createElement(
+                'li',
+                null,
+                ' Item ',
+                app.options[1],
+                ' '
+            )
         )
+    ) : React.createElement(
+        'p',
+        null,
+        ' No options! '
     )
 );
-
 var user = {
     name: 'Constantin',
-    age: 19,
-    location: "Bucharest"
+    age: 47,
+    location: 'Bucharest'
 };
 
 function getLocation(location) {
@@ -81,6 +90,12 @@ var templateTwo = React.createElement(
     ),
     getLocation(user.location)
 );
-
 var appRoot = document.getElementById("app");
 ReactDOM.render(template, appRoot);
+
+//Create a templateTWO var JSX expression
+// div
+// h1 -> Antochi Constantin
+// p -> Age: 42
+// p -> Location: Bucharest
+// Render TemplateTwo instead of Template
