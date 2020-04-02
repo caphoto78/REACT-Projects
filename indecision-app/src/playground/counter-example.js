@@ -1,3 +1,5 @@
+// count - setup default prop value to 0
+
 class CounterApp extends React.Component {
     constructor(props) {
         super(props);
@@ -25,6 +27,27 @@ class CounterApp extends React.Component {
             return { count: 0 }
         });
     };
+
+    componentDidMount() {
+        const stringCount = localStorage.getItem('count');
+        const count = parseInt(stringCount, 10);
+        // console.log(count);
+
+        if (!isNaN(count)) {
+            this.setState(() => ({ count }));
+
+        }
+
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.count !== this.state.count) {
+
+            localStorage.setItem('count', this.state.count);
+        }
+        // console.log(this.state.count);
+
+    }
 
     render() {
         return (
