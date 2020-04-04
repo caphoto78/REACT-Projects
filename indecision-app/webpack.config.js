@@ -1,6 +1,4 @@
-// entry point -> output
-const path = require('path')
-// console.log(path.join(__dirname, 'public'));
+const path = require('path');
 
 module.exports = {
     entry: './src/app.js',
@@ -13,6 +11,13 @@ module.exports = {
             loader: 'babel-loader',
             test: /\.js$/,
             exclude: /node_modules/
+        }, {
+            test: /\.s?css$/,
+            use: [
+                'style-loader',
+                'css-loader',
+                'sass-loader'
+            ]
         }]
     },
     devtool: 'cheap-module-eval-source-map',
